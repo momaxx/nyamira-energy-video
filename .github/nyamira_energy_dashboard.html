@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head><title>nyamira_energy_dashboard.jsx - Extracted Strings</title></head>
+<body>import React from &#34;react&#34;&#59;
+import &#123; Card, CardContent &#125; from &#34;&#64;&#47;components&#47;ui&#47;card&#34;&#59;
+import &#123; Progress &#125; from &#34;&#64;&#47;components&#47;ui&#47;progress&#34;&#59;
+import &#123; Bar, Pie &#125; from &#34;recharts&#34;&#59;
+
+import &#123;
+  BarChart,
+  Bar as RBar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  PieChart,
+  Pie as RPie,
+  Cell,
+  Legend,
+&#125; from &#34;recharts&#34;&#59;
+
+const consumptionData &#61; &#91;
+  &#123; name&#58; &#34;Current&#34;, value&#58; 31700 &#125;,
+  &#123; name&#58; &#34;Warning&#34;, value&#58; 50000 &#125;,
+  &#123; name&#58; &#34;Critical&#34;, value&#58; 70000 &#125;,
+&#93;&#59;
+
+const energySourceData &#61; &#91;
+  &#123; name&#58; &#34;Renewable&#34;, value&#58; 48&#46;2 &#125;,
+  &#123; name&#58; &#34;Non&#45;Renewable&#34;, value&#58; 51&#46;8 &#125;,
+&#93;&#59;
+
+const COLORS &#61; &#91;&#34;&#35;4ade80&#34;, &#34;&#35;9ca3af&#34;&#93;&#59;
+
+export default function EnergyDashboard&#40;&#41; &#123;
+  return &#40;
+    &#60;div className&#61;&#34;grid grid&#45;cols&#45;1 md&#58;grid&#45;cols&#45;2 gap&#45;6 p&#45;6&#34;&#62;
+      &#60;Card className&#61;&#34;col&#45;span&#45;1&#34;&#62;
+        &#60;CardContent&#62;
+          &#60;h2 className&#61;&#34;text&#45;xl font&#45;bold mb&#45;4&#34;&#62;Energy Consumption Levels&#60;&#47;h2&#62;
+          &#60;BarChart width&#61;&#123;400&#125; height&#61;&#123;300&#125; data&#61;&#123;consumptionData&#125;&#62;
+            &#60;CartesianGrid strokeDasharray&#61;&#34;3 3&#34; &#47;&#62;
+            &#60;XAxis dataKey&#61;&#34;name&#34; &#47;&#62;
+            &#60;YAxis &#47;&#62;
+            &#60;Tooltip &#47;&#62;
+            &#60;Legend &#47;&#62;
+            &#60;RBar dataKey&#61;&#34;value&#34; fill&#61;&#34;&#35;60a5fa&#34; &#47;&#62;
+          &#60;&#47;BarChart&#62;
+        &#60;&#47;CardContent&#62;
+      &#60;&#47;Card&#62;
+
+      &#60;Card className&#61;&#34;col&#45;span&#45;1&#34;&#62;
+        &#60;CardContent&#62;
+          &#60;h2 className&#61;&#34;text&#45;xl font&#45;bold mb&#45;4&#34;&#62;Energy Source Breakdown&#60;&#47;h2&#62;
+          &#60;PieChart width&#61;&#123;400&#125; height&#61;&#123;300&#125;&#62;
+            &#60;RPie
+              data&#61;&#123;energySourceData&#125;
+              cx&#61;&#34;50&#37;&#34;
+              cy&#61;&#34;50&#37;&#34;
+              outerRadius&#61;&#123;80&#125;
+              fill&#61;&#34;&#35;8884d8&#34;
+              dataKey&#61;&#34;value&#34;
+              label
+            &#62;
+              &#123;energySourceData&#46;map&#40;&#40;entry, index&#41; &#61;&#62; &#40;
+                &#60;Cell key&#61;&#123;&#96;cell&#45;&#36;&#123;index&#125;&#96;&#125; fill&#61;&#123;COLORS&#91;index &#37; COLORS&#46;length&#93;&#125; &#47;&#62;
+              &#41;&#41;&#125;
+            &#60;&#47;RPie&#62;
+            &#60;Tooltip &#47;&#62;
+            &#60;Legend &#47;&#62;
+          &#60;&#47;PieChart&#62;
+        &#60;&#47;CardContent&#62;
+      &#60;&#47;Card&#62;
+
+      &#60;Card className&#61;&#34;col&#45;span&#45;1 md&#58;col&#45;span&#45;2&#34;&#62;
+        &#60;CardContent&#62;
+          &#60;h2 className&#61;&#34;text&#45;xl font&#45;bold mb&#45;4&#34;&#62;Live Summary&#60;&#47;h2&#62;
+          &#60;p&#62;&#60;strong&#62;Last Update&#58;&#60;&#47;strong&#62; 2025&#45;07&#45;15 06&#58;27&#58;19&#46;512&#60;&#47;p&#62;
+          &#60;p&#62;&#60;strong&#62;Status&#58;&#60;&#47;strong&#62; NORMAL&#60;&#47;p&#62;
+          &#60;p&#62;&#60;strong&#62;Current Consumption&#58;&#60;&#47;strong&#62; 31,700&#46;00 kWh&#60;&#47;p&#62;
+          &#60;p&#62;&#60;strong&#62;Renewable Energy&#58;&#60;&#47;strong&#62; 48&#46;2&#37;&#60;&#47;p&#62;
+          &#60;div className&#61;&#34;mt&#45;4&#34;&#62;
+            &#60;p className&#61;&#34;mb&#45;2&#34;&#62;Renewable Energy Contribution&#58;&#60;&#47;p&#62;
+            &#60;Progress value&#61;&#123;48&#46;2&#125; &#47;&#62;
+          &#60;&#47;div&#62;
+        &#60;&#47;CardContent&#62;
+      &#60;&#47;Card&#62;
+    &#60;&#47;div&#62;
+  &#41;&#59;
+&#125;
+</body>
+</html>
